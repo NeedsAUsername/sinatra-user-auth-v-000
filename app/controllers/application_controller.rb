@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
 
   post '/registrations' do
 
-    if User.find_by(email: params[:email]) > 0
+    if User.find_by(email: params[:email]).size > 0
       redirect '/registration/signup'
     else
       @user = User.new(name: params[:name], email: params[:email], password: params[:password])
